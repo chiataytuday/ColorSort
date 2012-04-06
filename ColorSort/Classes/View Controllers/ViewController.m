@@ -415,16 +415,18 @@ typedef enum{
   CGFloat green = endColors[RGB_GREEN] * percent + (startColors[RGB_GREEN] * (1 - percent));
   CGFloat blue = endColors[RGB_BLUE] * percent + (startColors[RGB_BLUE] * (1 - percent));
     
-  return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];;
+  return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
 }
 
 //Checks to see if the user won or not.
 //Each segment is initially setup with the right order, and as they're shifted around the order is changed
 -(BOOL)didWin{
   BOOL didWin = YES;
+    
+  NSUInteger segmentCount = self.totalSegments - 1;
   
   for(SegmentView *segment in self.segments){    
-    if(segment.order != segment.index){
+    if(segment.order == segment.index || segment.order == (segmentCount - segment.index))){
       didWin = NO;
       break;
     }
