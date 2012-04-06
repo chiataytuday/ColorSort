@@ -1,5 +1,5 @@
 ## So far is included is:
-+ Generating of random colors
++ Generating of random colorsfrankielaguna: WOO! Just pushed my open source clone of http://t.co/JExjPGa http://t.co/Gy6szqt Still need to clean the project up a bit.
 + Generating gradient segments between 2 colors
 + Sorting the colors
 + Winning/losing
@@ -16,3 +16,13 @@
 + Right Arrow
 + Thumbs Up
 + Thumbs Down
+
+## TODO
++ Clean the project up
++ Integrate CoreData
++ Start Screen
++ Level difficulty
++ Level Select Screen
++ Monochromatic levels
++ Duotone levels
++ Other levels ??
