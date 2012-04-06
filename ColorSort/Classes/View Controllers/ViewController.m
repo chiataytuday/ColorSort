@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Frankie Laguna. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
-
 #import "ViewController.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 #import "Notifications.h"
 
@@ -24,6 +24,7 @@
 #import "SuccessView.h"
 
 #define FLASH_DURATION 0.1f
+#define ANIMATION_DURATION 0.1f
 
 //Enums
 typedef enum{
@@ -271,7 +272,7 @@ typedef enum{
   [self.view addSubview:self.failedView];
   [self.view bringSubviewToFront:self.failedView];
   
-  [UIView animateWithDuration:0.1f animations:^{
+  [UIView animateWithDuration:ANIMATION_DURATION animations:^{
     [self.failedView setAlpha:1.0f];
   }];
 }
@@ -291,7 +292,7 @@ typedef enum{
   //Clear the overlays
   [self.timerView reset];
   
-  [UIView animateWithDuration:0.1f animations:^{
+  [UIView animateWithDuration:ANIMATION_DURATION animations:^{
     [self.failedView setAlpha:0.0f];
     [self.successView setAlpha:0.0f];
   } completion:^(BOOL finished){
@@ -370,7 +371,7 @@ typedef enum{
 
 //Snap the view that's being dragged to it's new position
 -(void)snapDragView{
-  [UIView animateWithDuration:0.1f animations:^{
+  [UIView animateWithDuration:ANIMATION_DURATION animations:^{
     CGRect frame = self.draggingView.frame;
     frame.origin.y = (self.segmentHeight * self.draggingView.order);
     
@@ -387,7 +388,7 @@ typedef enum{
   
   SegmentView *overView = [self.segments objectAtIndex:hoverIndex];
   
-  [UIView animateWithDuration:0.1f animations:^{
+  [UIView animateWithDuration:ANIMATION_DURATION animations:^{
     CGRect frame = overView.frame;
     frame.origin.y = (draggingIndex * self.segmentHeight);
     
@@ -438,7 +439,7 @@ typedef enum{
     [self.view bringSubviewToFront:self.successView];
   }
   
-  [UIView animateWithDuration:0.1f animations:^{
+  [UIView animateWithDuration:ANIMATION_DURATION animations:^{
     [self.successView setAlpha:1.0f];
   }];
 }
