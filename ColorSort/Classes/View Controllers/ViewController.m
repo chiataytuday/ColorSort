@@ -116,7 +116,7 @@ typedef enum{
   
   //Setup the timer
   self.timerView = [[VerticalProgressBar alloc] initWithFrame:CGRectMake(0, 0, 20, CGRectGetHeight(self.view.frame))];
-  [self.timerView setTotalSeconds:10];
+  [self.timerView setTotalSeconds:2];
   
   [self.view addSubview:self.timerView];
   
@@ -167,6 +167,12 @@ typedef enum{
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+  if(!self.canDrag){
+    [self touchesEnded:touches withEvent:event];
+    
+    return;
+  }
+  
   if(!self.isDragging){ return; }
   
   UITouch *touch = [touches anyObject];
@@ -190,10 +196,14 @@ typedef enum{
   [self.draggingView setFrame:frame];  
 }
 
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+  NSLog(@"Cancelled");
+}
+
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-  if(!self.draggingView || !self.canDrag){ return; }
-  
   [self snapDragView];
+  
+  if(!self.draggingView || !self.canDrag){ return; }
 
   //Check to see if they won
   if([self didWin]){
