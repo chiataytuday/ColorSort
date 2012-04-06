@@ -265,10 +265,10 @@
 			children = (
 				3C5C0F90152F13CF00E53A37 /* ParentViewController.h */,
 				3C5C0F91152F13CF00E53A37 /* ParentViewController.m */,
-				5EEDCA4C152E8F5E00C34384 /* ViewController.h */,
-				5EEDCA4D152E8F5E00C34384 /* ViewController.m */,
 				3C5C0F8C152F13B400E53A37 /* LandingViewController.h */,
 				3C5C0F8D152F13B400E53A37 /* LandingViewController.m */,
+				5EEDCA4C152E8F5E00C34384 /* ViewController.h */,
+				5EEDCA4D152E8F5E00C34384 /* ViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -488,8 +488,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorSort/ColorSort-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ColorSort/Resources/Other/ColorSort-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -499,8 +501,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorSort/ColorSort-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "ColorSort/Resources/Other/ColorSort-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

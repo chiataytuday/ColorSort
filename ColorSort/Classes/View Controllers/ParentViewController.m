@@ -13,6 +13,7 @@
 
 @implementation ParentViewController
 
+#pragma mark - Init
 +(id)controller{
   NSString *xibName = NSStringFromClass([self class]);
   
@@ -27,6 +28,16 @@
   }
   
   return returnController;
+}
+
+#pragma mark - View Life Cycle
+-(void)viewDidLoad{
+  [super viewDidLoad];
+  
+  //Hide the status bar, and update the view to fill the screen
+  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  
+  [self.view setFrame:[[UIScreen mainScreen] bounds]];  
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{

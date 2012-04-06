@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Frankie Laguna. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ParentViewController.h"
 
 #import "OverlayButtonDelegate.h"
 
-@interface ViewController : UIViewController<OverlayButtonDelegate>
+@interface ViewController : ParentViewController<OverlayButtonDelegate>
 
 @end

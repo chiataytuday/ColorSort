@@ -43,11 +43,10 @@
   
   CGFloat hue = [[hsbComponents objectAtIndex:0] floatValue];
   CGFloat saturation = [[hsbComponents objectAtIndex:1] floatValue];
-  CGFloat brightness = [[hsbComponents objectAtIndex:2] floatValue];
   
   NSInteger randomNumber = (arc4random() % 45);  
-  brightness = ((CGFloat)randomNumber / 100.0f);
-  
+  CGFloat brightness = ((CGFloat)randomNumber / 100.0f);
+
   return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1.0f];
 }
 

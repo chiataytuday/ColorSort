@@ -34,37 +34,40 @@ typedef enum{
 
 @interface ViewController ()
 @property(strong, nonatomic) NSMutableArray *segments;
+
+//Config
+@property(nonatomic) NSUInteger minSegments;
+@property(nonatomic) NSUInteger maxSegments;
+@property(nonatomic) NSUInteger totalSegments;
+@property(nonatomic) CGFloat segmentHeight;
+
+//Overlay Views/Other VIews
 @property(strong, nonatomic) UIView *flashView;
-
 @property(strong, nonatomic) VerticalProgressBar *timerView;
-
 @property(strong, nonatomic) FailedView *failedView;
 @property(strong, nonatomic) SuccessView *successView;
 
-@property(nonatomic) NSUInteger minSegments;
-@property(nonatomic) NSUInteger maxSegments;
-
-@property(nonatomic) NSUInteger totalSegments;
-
-@property(nonatomic) CGFloat segmentHeight;
-
+//Dragging Config
+@property(strong, nonatomic) SegmentView *draggingView;
 @property(nonatomic) BOOL canDrag;
 @property(nonatomic) BOOL isDragging;
-@property(strong, nonatomic) SegmentView *draggingView;
 @property(nonatomic) CGPoint startPoint;
 
+//Colors
 @property(strong, nonatomic) UIColor *startColor;
 @property(strong, nonatomic) UIColor *endColor;
 @property(strong, nonatomic) UIColor *currentColor;
 
+//Game Management
 -(void)newGame;
 -(void)newGame:(BOOL)isReplay;
-
 -(void)clearGame;
 
+//View management
 -(void)shiftViews:(NSInteger)hoverIndex;
 -(void)snapDragView;
 
+//Success/Failure
 -(BOOL)didWin;
 -(void)timerCompleted;
 
@@ -73,30 +76,23 @@ typedef enum{
 //Color utilities
 -(UIColor *)colorForIndex:(NSUInteger)index;
 
+//Image notification
 -(void)image:(UIImage *)image didFinishedSaving:(NSError *)error contextInfo:(void *)context;
 @end
 
 @implementation ViewController
-@synthesize segments;
+@synthesize segments, segmentHeight;
 @synthesize totalSegments, minSegments, maxSegments;
-@synthesize timerView, failedView, successView;
-@synthesize flashView;
-
-@synthesize canDrag;
-@synthesize isDragging, draggingView, startPoint;
-@synthesize segmentHeight;
+@synthesize timerView, failedView, successView, flashView;
+@synthesize canDrag, isDragging, draggingView, startPoint;
 @synthesize startColor, endColor, currentColor;
 
 #pragma mark - View Life Cycle
 -(void)viewDidLoad{
   [super viewDidLoad];
   
-  [[UIApplication sharedApplication] setStatusBarHidden:YES];
-  
-  [self.view setFrame:[[UIScreen mainScreen] bounds]];
   [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg"]]];
   
-  //Configure
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timerCompleted) name:NOTIFICATION_TIMER_COMPLETE object:nil];
   
   self.maxSegments = 8;
@@ -124,6 +120,7 @@ typedef enum{
   
   [self.view addSubview:self.timerView];
   
+  //Start the game
   [self newGame];
 }
 
@@ -152,15 +149,19 @@ typedef enum{
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
   UITouch *touch = [touches anyObject];
   
+  //Don't let the user do anything if:
+  // - The Game is over
+  // - They're not touching a view (probably won't happen)
+  // - They're touching a view they shouldn't be
   if(!self.canDrag || !touch.view || ![touch.view isKindOfClass:[SegmentView class]]){    
     return; 
   }
   
   self.isDragging = YES;
-  
   self.startPoint = [touch locationInView:touch.view];
   self.draggingView = (SegmentView *)touch.view;
   
+  //TODO: Think of a better solution for moving the dragging view behind the timer view
   [self.view bringSubviewToFront:self.draggingView];
   [self.view bringSubviewToFront:self.timerView];
 }
@@ -209,7 +210,7 @@ typedef enum{
   self.draggingView = nil;
 }
 
-#pragma mark - FailedButtonDelegate, SuccessButtonDelegate
+#pragma mark - OverlayButtonDelegate
 -(void)popToLevelSelect{
   NSLog(@"Level select");
 }
@@ -222,7 +223,6 @@ typedef enum{
   [self newGame:YES];
 }
 
-#pragma - SuccessButtonDelegate
 -(void)nextLevel{
   NSLog(@"Next Level");
 }
@@ -231,7 +231,6 @@ typedef enum{
   [UIView animateWithDuration:0.3f animations:^{
     [self.successView setAlpha:0.0f];
   } completion:^(BOOL finished){
-    
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0f);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
@@ -249,6 +248,20 @@ typedef enum{
     } completion:^(BOOL finished){
       UIImageWriteToSavedPhotosAlbum(screenshot, self, @selector(image:didFinishedSaving:contextInfo:), nil);     
     }];   
+  }];
+}
+
+
+#pragma mark - Notification Handlers
+-(void)timerCompleted{
+  [self snapDragView];
+  [self setCanDrag:NO];
+  
+  [self.view addSubview:self.failedView];
+  [self.view bringSubviewToFront:self.failedView];
+  
+  [UIView animateWithDuration:0.1f animations:^{
+    [self.failedView setAlpha:1.0f];
   }];
 }
 
@@ -276,14 +289,16 @@ typedef enum{
   }];
 }
 
+//If it's a replay the colors/segments won't be regenerated
 -(void)newGame:(BOOL)isReplay{
+  //Clean up before starting a new game.
   [self clearGame];
 
   [self setCanDrag:YES];
 
+  //Randomly generate the number of segments, the start color and the end color
   if(!isReplay){
     self.totalSegments = (arc4random() % (self.maxSegments - self.minSegments)) + self.minSegments;
-    
     self.startColor = [UIColor randomColor];
     self.endColor = [UIColor slightlyDarkerColor:self.startColor];
   }
@@ -293,20 +308,23 @@ typedef enum{
   CGFloat height = CGRectGetHeight(self.view.frame);
   CGFloat width = CGRectGetWidth(self.view.frame);
   
+  //Determine each segment's height
   self.segmentHeight = height / (CGFloat) self.totalSegments;
   
+  //Create each segment
   for(NSInteger i = 0; i < self.totalSegments; i++){
     CGRect frame = CGRectMake(0, 0, width, self.segmentHeight);
     
     SegmentView *segmentView = [[SegmentView alloc] initWithFrame:frame];
     [segmentView setIndex:i];
-    [segmentView setOrder:i];
+    [segmentView setOrder:i]; //This is required for the shuffle loop to properly work
     
     [segmentView setBackgroundColor:[self colorForIndex:i]];
     
     [self.segments addObject:segmentView];
   }
   
+  //Shuffle the segments and make sure we don't give the user an already solved board
   while([self didWin] == YES){    
     [self.segments shuffle];
     
@@ -328,8 +346,10 @@ typedef enum{
     }
   }
   
+  //Make sure the timer is above everything else
   [self.view bringSubviewToFront:self.timerView];
   
+  //LET THE GREAT EXPERIMENT! BEGIN!
   [self.timerView startTimer];
 }
 
@@ -337,8 +357,8 @@ typedef enum{
   [self newGame:NO];
 }
 
+//Snap the view that's being dragged to it's new position
 -(void)snapDragView{
-  //Snap the view that's being dragged to it's new position
   [UIView animateWithDuration:0.1f animations:^{
     CGRect frame = self.draggingView.frame;
     frame.origin.y = (self.segmentHeight * self.draggingView.order);
@@ -347,6 +367,8 @@ typedef enum{
   }];
 }
 
+//As a segment is moved around, this method will be called
+//The segments array is shifted around to reflect the UI changes
 -(void)shiftViews:(NSInteger)hoverIndex{
   NSUInteger draggingIndex = self.draggingView.order;
   
@@ -367,6 +389,7 @@ typedef enum{
   [self.segments exchangeObjectAtIndex:hoverIndex withObjectAtIndex:draggingIndex];
 }
 
+//Returns the next color for the given index (which is converted to a percent) (Duh)
 -(UIColor *)colorForIndex:(NSUInteger)index{  
   CGFloat percent = ((CGFloat)index / (CGFloat)(self.totalSegments-1));
 
@@ -383,6 +406,8 @@ typedef enum{
   return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];;
 }
 
+//Checks to see if the user won or not.
+//Each segment is initially setup with the right order, and as they're shifted around the order is changed
 -(BOOL)didWin{
   BOOL didWin = YES;
   
@@ -396,19 +421,6 @@ typedef enum{
   return didWin;
 }
 
--(void)timerCompleted{
-  [self snapDragView];
-  [self setCanDrag:NO];
-  
-  [self.view addSubview:self.failedView];
-  [self.view bringSubviewToFront:self.failedView];
-  
-  [UIView animateWithDuration:0.1f animations:^{
-    [self.failedView setAlpha:1.0f];
-  }];
-}
-
-
 -(void)showSuccessView{
   if(!self.successView.superview){
     [self.view addSubview:self.successView];
@@ -420,9 +432,15 @@ typedef enum{
   }];
 }
 
+//Required by UIImageWriteToSavedPhotosAlbum
+//Callback method to inform the view that saving has infact finished. 
+//Hides and removes the flash view and reshows the success view
 -(void)image:(UIImage *)image didFinishedSaving:(NSError *)error contextInfo:(void *)context{
   [UIView animateWithDuration:FLASH_DURATION animations:^{
     [self.flashView setAlpha:0.0f];
+  } completion:^(BOOL finished){
+    [self.flashView removeFromSuperview];
+    self.flashView = nil;
   }];
   
   [self showSuccessView];
