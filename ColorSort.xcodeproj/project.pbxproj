@@ -350,6 +350,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Frankie Laguna";
 			};
 			buildConfigurationList = 5EEDCA05152E8F2A00C34384 /* Build configuration list for PBXProject "ColorSort" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -501,6 +502,7 @@
 				5EEDCA2E152E8F2B00C34384 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
