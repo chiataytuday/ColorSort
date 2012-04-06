@@ -34,7 +34,6 @@
 		5EEDCA78152E8F5E00C34384 /* icon-thumbs-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EEDCA5F152E8F5E00C34384 /* icon-thumbs-up@2x.png */; };
 		5EEDCA7A152E8F5E00C34384 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEDCA63152E8F5E00C34384 /* ViewController.xib */; };
 		5EEDCA7C152E8F7000C34384 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEDCA7B152E8F7000C34384 /* QuartzCore.framework */; };
-		5EEDCA7E152E8FA300C34384 /* ColorSort-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5EEDCA7D152E8FA300C34384 /* ColorSort-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -388,7 +387,6 @@
 				5EEDCA77152E8F5E00C34384 /* icon-thumbs-down@2x.png in Resources */,
 				5EEDCA78152E8F5E00C34384 /* icon-thumbs-up@2x.png in Resources */,
 				5EEDCA7A152E8F5E00C34384 /* ViewController.xib in Resources */,
-				5EEDCA7E152E8FA300C34384 /* ColorSort-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
