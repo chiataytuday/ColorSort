@@ -16,7 +16,7 @@
 #pragma mark - Init
 -(id)initWithFrame:(CGRect)frame{
   if(self = [super initWithFrame:frame]){
-    [self setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.75f]];
+    [self setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.35f]];
     [self.layer setCornerRadius:3.0f];
   }
   

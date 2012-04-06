@@ -21,6 +21,7 @@
 #define MESSAGE_MARGIN 10.0f
 #define MESSAGE_WIDTH 150.0f
 #define MESSAGE_HEIGHT 50.0f
+#define MESSAGE_ALPHA 0.35f
 #define FONT_SIZE 32.0f
 
 @interface VerticalProgressBar()
@@ -57,7 +58,7 @@
     //Create the message view that will be display the seconds it took when the timer is paused/finished
     CGRect messageFrame = CGRectMake(CGRectGetMaxX(backgroundFrame) + MESSAGE_MARGIN, 0, MESSAGE_WIDTH, MESSAGE_HEIGHT);
     self.messageView = [[UIView alloc] initWithFrame:messageFrame];
-    [self.messageView setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.7f]];
+    [self.messageView setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:MESSAGE_ALPHA]];
     [self.messageView.layer setCornerRadius:5.0f];
     [self.messageView setAlpha:0.0f];
     

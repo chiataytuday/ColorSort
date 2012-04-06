@@ -108,10 +108,10 @@
 		3C5C0FA0152F1A8600E53A37 /* Overlays */ = {
 			isa = PBXGroup;
 			children = (
-				3C5C0FA1152F1A8600E53A37 /* FailedView.h */,
-				3C5C0FA2152F1A8600E53A37 /* FailedView.m */,
 				3C5C0FA3152F1A8600E53A37 /* OverlayView.h */,
 				3C5C0FA4152F1A8600E53A37 /* OverlayView.m */,
+				3C5C0FA1152F1A8600E53A37 /* FailedView.h */,
+				3C5C0FA2152F1A8600E53A37 /* FailedView.m */,
 				3C5C0FA5152F1A8600E53A37 /* SuccessView.h */,
 				3C5C0FA6152F1A8600E53A37 /* SuccessView.m */,
 			);

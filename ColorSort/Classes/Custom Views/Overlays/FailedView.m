@@ -17,7 +17,7 @@
 @implementation FailedView
 
 -(id)initWithFrame:(CGRect)frame{
-  if(self = [super initWithFrame:frame]){    
+  if(self = [super initWithFrame:frame]){ 
     //Thumbs down button
     UIImage *thumbsDownImage = [UIImage imageNamed:@"icon-thumbs-down"];
     
