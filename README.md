@@ -1,4 +1,4 @@
-# So far what I have is:
+## So far is included is:
 + Generating of random colors
 + Generating gradient segments between 2 colors
 + Sorting the colors
