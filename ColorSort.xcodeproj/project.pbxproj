@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C5C0F8E152F13B400E53A37 /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C0F8D152F13B400E53A37 /* LandingViewController.m */; };
+		3C5C0F92152F13CF00E53A37 /* ParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C0F91152F13CF00E53A37 /* ParentViewController.m */; };
+		3C5C0FA7152F1A8600E53A37 /* FailedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C0FA2152F1A8600E53A37 /* FailedView.m */; };
+		3C5C0FA8152F1A8600E53A37 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C0FA4152F1A8600E53A37 /* OverlayView.m */; };
+		3C5C0FA9152F1A8600E53A37 /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5C0FA6152F1A8600E53A37 /* SuccessView.m */; };
 		5EEDCA10152E8F2A00C34384 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEDCA0F152E8F2A00C34384 /* UIKit.framework */; };
 		5EEDCA12152E8F2A00C34384 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEDCA11152E8F2A00C34384 /* Foundation.framework */; };
 		5EEDCA14152E8F2A00C34384 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEDCA13152E8F2A00C34384 /* CoreGraphics.framework */; };
 		5EEDCA1C152E8F2A00C34384 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA1B152E8F2A00C34384 /* main.m */; };
 		5EEDCA64152E8F5E00C34384 /* NSMutableArray+ArchUtils_Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA33152E8F5E00C34384 /* NSMutableArray+ArchUtils_Shuffle.m */; };
 		5EEDCA65152E8F5E00C34384 /* UIColor+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA35152E8F5E00C34384 /* UIColor+Utilities.m */; };
-		5EEDCA66152E8F5E00C34384 /* FailedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA38152E8F5E00C34384 /* FailedView.m */; };
 		5EEDCA67152E8F5E00C34384 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA3A152E8F5E00C34384 /* SegmentView.m */; };
-		5EEDCA68152E8F5E00C34384 /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA3C152E8F5E00C34384 /* SuccessView.m */; };
 		5EEDCA69152E8F5E00C34384 /* VerticalProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA3E152E8F5E00C34384 /* VerticalProgressBar.m */; };
 		5EEDCA6A152E8F5E00C34384 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA44152E8F5E00C34384 /* AppDelegate.m */; };
 		5EEDCA6B152E8F5E00C34384 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDCA4D152E8F5E00C34384 /* ViewController.m */; };
@@ -37,6 +40,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C5C0F8C152F13B400E53A37 /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
+		3C5C0F8D152F13B400E53A37 /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
+		3C5C0F90152F13CF00E53A37 /* ParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentViewController.h; sourceTree = "<group>"; };
+		3C5C0F91152F13CF00E53A37 /* ParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentViewController.m; sourceTree = "<group>"; };
+		3C5C0F9A152F18B300E53A37 /* OverlayButtonDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayButtonDelegate.h; sourceTree = "<group>"; };
+		3C5C0FA1152F1A8600E53A37 /* FailedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedView.h; sourceTree = "<group>"; };
+		3C5C0FA2152F1A8600E53A37 /* FailedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedView.m; sourceTree = "<group>"; };
+		3C5C0FA3152F1A8600E53A37 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
+		3C5C0FA4152F1A8600E53A37 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		3C5C0FA5152F1A8600E53A37 /* SuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessView.h; sourceTree = "<group>"; };
+		3C5C0FA6152F1A8600E53A37 /* SuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessView.m; sourceTree = "<group>"; };
 		5EEDCA0B152E8F2A00C34384 /* ColorSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEDCA0F152E8F2A00C34384 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5EEDCA11152E8F2A00C34384 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,18 +62,12 @@
 		5EEDCA33152E8F5E00C34384 /* NSMutableArray+ArchUtils_Shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ArchUtils_Shuffle.m"; sourceTree = "<group>"; };
 		5EEDCA34152E8F5E00C34384 /* UIColor+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utilities.h"; sourceTree = "<group>"; };
 		5EEDCA35152E8F5E00C34384 /* UIColor+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utilities.m"; sourceTree = "<group>"; };
-		5EEDCA37152E8F5E00C34384 /* FailedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedView.h; sourceTree = "<group>"; };
-		5EEDCA38152E8F5E00C34384 /* FailedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedView.m; sourceTree = "<group>"; };
 		5EEDCA39152E8F5E00C34384 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		5EEDCA3A152E8F5E00C34384 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
-		5EEDCA3B152E8F5E00C34384 /* SuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessView.h; sourceTree = "<group>"; };
-		5EEDCA3C152E8F5E00C34384 /* SuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessView.m; sourceTree = "<group>"; };
 		5EEDCA3D152E8F5E00C34384 /* VerticalProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalProgressBar.h; sourceTree = "<group>"; };
 		5EEDCA3E152E8F5E00C34384 /* VerticalProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalProgressBar.m; sourceTree = "<group>"; };
 		5EEDCA43152E8F5E00C34384 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5EEDCA44152E8F5E00C34384 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5EEDCA45152E8F5E00C34384 /* FailedButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedButtonDelegate.h; sourceTree = "<group>"; };
-		5EEDCA46152E8F5E00C34384 /* SuccessButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessButtonDelegate.h; sourceTree = "<group>"; };
 		5EEDCA49152E8F5E00C34384 /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
 		5EEDCA4C152E8F5E00C34384 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5EEDCA4D152E8F5E00C34384 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -97,6 +105,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C5C0FA0152F1A8600E53A37 /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				3C5C0FA1152F1A8600E53A37 /* FailedView.h */,
+				3C5C0FA2152F1A8600E53A37 /* FailedView.m */,
+				3C5C0FA3152F1A8600E53A37 /* OverlayView.h */,
+				3C5C0FA4152F1A8600E53A37 /* OverlayView.m */,
+				3C5C0FA5152F1A8600E53A37 /* SuccessView.h */,
+				3C5C0FA6152F1A8600E53A37 /* SuccessView.m */,
+			);
+			path = Overlays;
+			sourceTree = "<group>";
+		};
 		5EEDCA00152E8F2A00C34384 = {
 			isa = PBXGroup;
 			children = (
@@ -175,12 +196,9 @@
 		5EEDCA36152E8F5E00C34384 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				5EEDCA37152E8F5E00C34384 /* FailedView.h */,
-				5EEDCA38152E8F5E00C34384 /* FailedView.m */,
+				3C5C0FA0152F1A8600E53A37 /* Overlays */,
 				5EEDCA39152E8F5E00C34384 /* SegmentView.h */,
 				5EEDCA3A152E8F5E00C34384 /* SegmentView.m */,
-				5EEDCA3B152E8F5E00C34384 /* SuccessView.h */,
-				5EEDCA3C152E8F5E00C34384 /* SuccessView.m */,
 				5EEDCA3D152E8F5E00C34384 /* VerticalProgressBar.h */,
 				5EEDCA3E152E8F5E00C34384 /* VerticalProgressBar.m */,
 			);
@@ -215,8 +233,7 @@
 			children = (
 				5EEDCA43152E8F5E00C34384 /* AppDelegate.h */,
 				5EEDCA44152E8F5E00C34384 /* AppDelegate.m */,
-				5EEDCA45152E8F5E00C34384 /* FailedButtonDelegate.h */,
-				5EEDCA46152E8F5E00C34384 /* SuccessButtonDelegate.h */,
+				3C5C0F9A152F18B300E53A37 /* OverlayButtonDelegate.h */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -246,8 +263,12 @@
 		5EEDCA4B152E8F5E00C34384 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3C5C0F90152F13CF00E53A37 /* ParentViewController.h */,
+				3C5C0F91152F13CF00E53A37 /* ParentViewController.m */,
 				5EEDCA4C152E8F5E00C34384 /* ViewController.h */,
 				5EEDCA4D152E8F5E00C34384 /* ViewController.m */,
+				3C5C0F8C152F13B400E53A37 /* LandingViewController.h */,
+				3C5C0F8D152F13B400E53A37 /* LandingViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -400,12 +421,15 @@
 				5EEDCA1C152E8F2A00C34384 /* main.m in Sources */,
 				5EEDCA64152E8F5E00C34384 /* NSMutableArray+ArchUtils_Shuffle.m in Sources */,
 				5EEDCA65152E8F5E00C34384 /* UIColor+Utilities.m in Sources */,
-				5EEDCA66152E8F5E00C34384 /* FailedView.m in Sources */,
 				5EEDCA67152E8F5E00C34384 /* SegmentView.m in Sources */,
-				5EEDCA68152E8F5E00C34384 /* SuccessView.m in Sources */,
 				5EEDCA69152E8F5E00C34384 /* VerticalProgressBar.m in Sources */,
 				5EEDCA6A152E8F5E00C34384 /* AppDelegate.m in Sources */,
 				5EEDCA6B152E8F5E00C34384 /* ViewController.m in Sources */,
+				3C5C0F8E152F13B400E53A37 /* LandingViewController.m in Sources */,
+				3C5C0F92152F13CF00E53A37 /* ParentViewController.m in Sources */,
+				3C5C0FA7152F1A8600E53A37 /* FailedView.m in Sources */,
+				3C5C0FA8152F1A8600E53A37 /* OverlayView.m in Sources */,
+				3C5C0FA9152F1A8600E53A37 /* SuccessView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

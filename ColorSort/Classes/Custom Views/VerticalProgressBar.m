@@ -6,11 +6,15 @@
 //  Copyright (c) 2012 Frankie Laguna. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "VerticalProgressBar.h"
 
+//Frameworks
+#import <QuartzCore/QuartzCore.h>
+
+//Other
 #import "Notifications.h"
 
+//Static config
 #define MARGIN 1.0f
 #define BACKGROUND_WIDTH 3.0f
 #define INTERVAL 0.01f
@@ -50,23 +54,25 @@
     self.progressView = [[UIView alloc] initWithFrame:progressFrame];
     [self.progressView setBackgroundColor:[UIColor whiteColor]];
     
-    //Add
-    [self.backgroundView addSubview:self.progressView];
-    [self addSubview:self.backgroundView];
-    
+    //Create the message view that will be display the seconds it took when the timer is paused/finished
     CGRect messageFrame = CGRectMake(CGRectGetMaxX(backgroundFrame) + MESSAGE_MARGIN, 0, MESSAGE_WIDTH, MESSAGE_HEIGHT);
     self.messageView = [[UIView alloc] initWithFrame:messageFrame];
     [self.messageView setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.7f]];
     [self.messageView.layer setCornerRadius:5.0f];
     [self.messageView setAlpha:0.0f];
     
+    //Create the label itself
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MESSAGE_WIDTH, MESSAGE_HEIGHT)];
     [self.timeLabel setBackgroundColor:[UIColor clearColor]];
     [self.timeLabel setTextColor:[UIColor whiteColor]];
     [self.timeLabel setTextAlignment:UITextAlignmentCenter];
     [self.timeLabel setFont:[UIFont systemFontOfSize:FONT_SIZE]];
-    [self.messageView addSubview:self.timeLabel];
     
+    
+    [self.backgroundView addSubview:self.progressView];
+    [self addSubview:self.backgroundView];
+    
+    [self.messageView addSubview:self.timeLabel];
     [self addSubview:self.messageView];
   }
 
@@ -141,9 +147,11 @@
     }];
   }
   
-  CGFloat minutes = fmodf((self.secondsLeft / 60.0f), 60.0f);
-  CGFloat seconds = fmodf(self.secondsLeft, 60.0f);  
-  CGFloat hundredths = (self.secondsLeft - floor(self.secondsLeft)) * 100; //Eh.
+  CGFloat timeTaken = (self.totalSeconds - self.secondsLeft);
+  
+  CGFloat minutes = fmodf((timeTaken / 60.0f), 60.0f);
+  CGFloat seconds = fmodf(timeTaken, 60.0f);  
+  CGFloat hundredths = (timeTaken - floor(timeTaken)) * 100;
   
   NSString *timeString = [NSString stringWithFormat:@"%02.0f:%02.0f:%02.0f", minutes, seconds, hundredths];
   

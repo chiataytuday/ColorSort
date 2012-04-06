@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FailedButtonDelegate.h"
-#import "SuccessButtonDelegate.h"
+#import "OverlayButtonDelegate.h"
 
-@interface ViewController : UIViewController<FailedButtonDelegate, SuccessButtonDelegate>
+@interface ViewController : UIViewController<OverlayButtonDelegate>
 
 @end

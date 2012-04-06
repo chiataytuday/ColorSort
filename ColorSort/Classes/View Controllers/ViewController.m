@@ -118,7 +118,6 @@ typedef enum{
   [self.successView setAlpha:0.0f];
   [self.successView setDelegate:self];
   
-  
   //Setup the timer
   self.timerView = [[VerticalProgressBar alloc] initWithFrame:CGRectMake(0, 0, 20, CGRectGetHeight(self.view.frame))];
   [self.timerView setTotalSeconds:10];
@@ -132,6 +131,16 @@ typedef enum{
   [super viewDidUnload];
   
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+  
+  self.segments = nil;
+  self.timerView = nil;
+  self.failedView = nil;
+  self.successView = nil;
+  self.flashView = nil;
+  self.startColor = nil;
+  self.endColor = nil;
+  self.currentColor = nil;
+  self.draggingView = nil;
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
