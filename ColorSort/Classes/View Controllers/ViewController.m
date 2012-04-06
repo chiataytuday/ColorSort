@@ -116,7 +116,7 @@ typedef enum{
   
   //Setup the timer
   self.timerView = [[VerticalProgressBar alloc] initWithFrame:CGRectMake(0, 0, 20, CGRectGetHeight(self.view.frame))];
-  [self.timerView setTotalSeconds:2];
+  [self.timerView setTotalSeconds:10];
   
   [self.view addSubview:self.timerView];
   
@@ -196,10 +196,6 @@ typedef enum{
   [self.draggingView setFrame:frame];  
 }
 
--(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-  NSLog(@"Cancelled");
-}
-
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
   [self snapDragView];
   
@@ -238,14 +234,19 @@ typedef enum{
 }
 
 -(void)takeScreenshot{  
+  //Hide the success menu
   [UIView animateWithDuration:0.3f animations:^{
     [self.successView setAlpha:0.0f];
   } completion:^(BOOL finished){
+    //Save the UIView's context into an image
+    //Use the devices scale
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0f);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();  
     
+    //Create the fake flash view
+    //Bring it to the front
     self.flashView = [[UIView alloc] initWithFrame:self.view.frame];
     [self.flashView setBackgroundColor:[UIColor whiteColor]];
     [self.flashView setAlpha:0.0f];
@@ -253,14 +254,14 @@ typedef enum{
     [self.view addSubview:self.flashView];
     [self.view bringSubviewToFront:self.flashView];
     
+    //Fake the screen flash
     [UIView animateWithDuration:FLASH_DURATION animations:^{
       [self.flashView setAlpha:1.0f];
     } completion:^(BOOL finished){
-      UIImageWriteToSavedPhotosAlbum(screenshot, self, @selector(image:didFinishedSaving:contextInfo:), nil);     
+      UIImageWriteToSavedPhotosAlbum(screenshot, self, @selector(image:didFinishedSaving:contextInfo:), nil);
     }];   
   }];
 }
-
 
 #pragma mark - Notification Handlers
 -(void)timerCompleted{
@@ -444,8 +445,9 @@ typedef enum{
 
 //Required by UIImageWriteToSavedPhotosAlbum
 //Callback method to inform the view that saving has infact finished. 
-//Hides and removes the flash view and reshows the success view
--(void)image:(UIImage *)image didFinishedSaving:(NSError *)error contextInfo:(void *)context{
+//Hides/removes the flash view, and reshows the success view
+-(void)image:(UIImage *)image didFinishedSaving:(NSError *)error contextInfo:(void *)context{  
+
   [UIView animateWithDuration:FLASH_DURATION animations:^{
     [self.flashView setAlpha:0.0f];
   } completion:^(BOOL finished){
