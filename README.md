@@ -1,12 +1,14 @@
-## So far is included is:
-+ Generating of random colorsfrankielaguna: WOO! Just pushed my open source clone of http://t.co/JExjPGa http://t.co/Gy6szqt Still need to clean the project up a bit.
+#[Demo Video](http://www.youtube.com/watch?v=8F60TeUQwN0)
+
+## So far what is included is:
++ Generating of random 
 + Generating gradient segments between 2 colors
 + Sorting the colors
 + Winning/losing
 + Timer
 + Failed view
 + Success view
-+ Screenshot saving
++ Taking a Screenshot and saving it
 + Replaying of a level
 
 ## The Following Icons are from: [The Noun Project](http://thenounproject.com/ "The Noun Project")
@@ -19,6 +21,7 @@
 
 ## TODO
 + Clean the project up
++ Switch from using the touches events to UIGestureRecognizers
 + Integrate CoreData
 + Start Screen
 + Level difficulty
